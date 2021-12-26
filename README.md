@@ -3,7 +3,9 @@
 ## 01. 환경설정
 
 [01. Spring 개발환경설정](https://github.com/hy6219/Spring_Review/blob/main/Step01.Environment_Manual/STS%EC%97%90%20%EB%A1%AC%EB%B3%B5%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0.md)
+
 [02. STS에 롬복설치하기](https://github.com/hy6219/Spring_Review/blob/main/Step01.Environment_Manual/STS%EC%97%90%20%EB%A1%AC%EB%B3%B5%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0.md)
+
 [03. Spring+MyBatis+MySQL](https://github.com/hy6219/Spring_Review/blob/main/Step01.Environment_Manual/Spring%2BMyBatis%2BMySQL.md)
 
 ## 02. Spring MVC 패턴2
