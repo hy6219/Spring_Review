@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="board">
+  	<resultMap type="boardDto" id="boardMap">
+  	   <result property="bno" column="BNO"/>
+  	   <result property="title" column="TITLE"/>
+  	   <result property="content" column="CONTENT"/>
+  	   <result property="writer" column="WRITER"/>
+  	   <result property="regDate" column="REGDATE"/>
+  	   <result property="viewCnt" column="VIEWCNT"/>
+  	</resultMap>
+  	<insert id="insert" parameterType="boardDto">
+  		INSERT INTO TBL_BOARD(TITLE,CONTENT,WRITER)
+  		VALUES(#{title},#{content},#{writer})
+  	</insert>
+  	<select id="selectOne" resultType="boardDto">
+  		SELECT BNO,TITLE,CONTENT,WRITER,REGDATE,VIEWCNT
+  		FROM TBL_BOARD
+  		WHERE BNO=#{bno}
+  	</select>
+  	<select id="selectAll" resultType="boardDto">
+  		<![CDATA[
+  			SELECT BNO,TITLE,CONTENT,WRITER,REGDATE,VIEWCNT
+  			FROM TBL_BOARD
+  			WHERE BNO>0
+  			ORDER BY BNO DESC,REGDATE DESC
+  		]]>
+  	</select>
+  	<update id="update" parameterType="boardDto">
+  		UPDATE TBL_BOARD
+  		SET TITLE=#{title},CONTENT=#{content}
+  		WHERE BNO=#{bno}
+  	</update>
+  	<delete id="delete" parameterType="int">
+  		DELETE FROM TBL_BOARD
+  		WHERE BNO=#{bno}
+  	</delete>
+  </mapper>
