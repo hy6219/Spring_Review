@@ -6,11 +6,14 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.zero.mvc.domain.model.BoardVO;
@@ -75,20 +78,14 @@ public class BoardController {
 	
 		//특정글 상세보기
 		@RequestMapping(value="/read", method=RequestMethod.GET)
-		public String read(@RequestParam("bno") int bno,Model model,RedirectAttributes rttr) {
+		public String read(@RequestParam("bno") int bno,Model model) throws Exception {
 			
 			BoardVO target=new BoardVO();
-			
-			try {
-				target=service.read(bno);
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
+			target=service.read(bno);
 			
 			if(target==null) {
 				//존재하지 않는 경우
-				rttr.addFlashAttribute("msg","failed");
-				return "redirect: /board/listAll";
+				throw new Exception("예외발생,처리");
 			}
 			
 			//존재하는 경우
@@ -159,5 +156,13 @@ public class BoardController {
 		}
 		
 		return "redirect:/board/listAll";
+	}
+	
+	//예외처리
+	//exceptionHandler,ResponseStatus
+	@ExceptionHandler(Exception.class)
+	@ResponseStatus(value=HttpStatus.NOT_FOUND,reason="404")
+	public void handleException(Exception e) {
+		logger.info("error:{}",e.getMessage());
 	}
 }
