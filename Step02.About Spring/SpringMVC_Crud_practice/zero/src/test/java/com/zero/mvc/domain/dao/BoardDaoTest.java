@@ -1,5 +1,7 @@
 package com.zero.mvc.domain.dao;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -9,6 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.zero.mvc.domain.model.BoardVO;
+import com.zero.mvc.domain.model.Criteria;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations= {"file:src/main/webapp/WEB-INF/spring/**/*.xml"})
@@ -20,15 +23,15 @@ public class BoardDaoTest {
 	private static Logger logger=
 			LoggerFactory.getLogger(BoardDaoTest.class);
 	
-	@Test
-	public void insertTest() throws Exception{
-		BoardVO board=new BoardVO();
-		board.setTitle("Á¦¸ñ3");
-		board.setContent("³»¿ë3");
-		board.setWriter("ÀÛ°¡3");
-		System.out.println("board: "+board);
-		dao.insert(board);
-	}
+//	@Test
+//	public void insertTest() throws Exception{
+//		BoardVO board=new BoardVO();
+//		board.setTitle("ì œëª©3");
+//		board.setContent("ë‚´ìš©3");
+//		board.setWriter("ìœ ì €3");
+//		System.out.println("board: "+board);
+//		dao.insert(board);
+//	}
 	
 	@Test
 	public void selectOneTest() throws Exception {
@@ -42,17 +45,42 @@ public class BoardDaoTest {
 	
 
 	
+//	@Test
+//	public void testUpdate() throws Exception{
+//		BoardVO board=new BoardVO();
+//		board.setBno(1);
+//		board.setTitle("ìˆ˜ì •ìˆ˜ì •");
+//		board.setContent("ë‚´ìš©ìˆ˜ì •ìˆ˜ì •~");
+//		dao.update(board);
+//	}
+//	
+//	@Test
+//	public void testDelete() throws Exception{
+//		dao.delete(2);
+//	}
+	
 	@Test
-	public void testUpdate() throws Exception{
-		BoardVO board=new BoardVO();
-		board.setBno(1);
-		board.setTitle("¼öÁ¤µÈ Á¦¸ñ");
-		board.setContent("¼öÁ¤µÈ ³»¿ë");
-		dao.update(board);
+	public void testGetPagingContents() throws Exception{
+		List<BoardVO> list=dao.listPage(3);
+		logger.info("=======testGetPagingContents í…ŒìŠ¤íŠ¸=======");
+		for(BoardVO board:list) {
+			logger.info("ì»¨í…ì¸ : {}",board.toString());
+		}
+		logger.info("=======");
 	}
 	
 	@Test
-	public void testDelete() throws Exception{
-		dao.delete(2);
+	public void testListCriteria() throws Exception{
+		
+		Criteria cri=new Criteria();
+		cri.setPage(2);
+		cri.setPageNum(20);
+		List<BoardVO> list=dao.listCriteria(cri);
+		logger.info("=======listCriteria í…ŒìŠ¤íŠ¸=======");
+		
+		for(BoardVO board:list) {
+			logger.info("ì»¨í…ì¸ : {}",board.toString());
+		}
+		logger.info("=======");
 	}
 }

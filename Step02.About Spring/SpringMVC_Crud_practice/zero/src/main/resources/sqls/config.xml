@@ -7,9 +7,11 @@
   	<!-- 별칭 -->
    	<typeAliases>
    		<typeAlias type="com.zero.mvc.domain.model.BoardVO" alias="boardDto"/>
+   		<typeAlias type="com.zero.mvc.domain.model.Criteria" alias="criteria"/>   		
+   		<typeAlias type="com.zero.mvc.domain.model.PageMaker" alias="pageMaker"/>   		
   	</typeAliases>
   		<typeHandlers>
-  <!-- ... -->
+  <!-- LocalDateTime등 for jdk8 in mybatis -->
   		<typeHandler handler="org.apache.ibatis.type.InstantTypeHandler" />
   		<typeHandler handler="org.apache.ibatis.type.LocalDateTimeTypeHandler" />
   		<typeHandler handler="org.apache.ibatis.type.LocalDateTypeHandler" />

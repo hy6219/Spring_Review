@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.zero.mvc.domain.dao.BoardDao;
 import com.zero.mvc.domain.model.BoardVO;
+import com.zero.mvc.domain.model.Criteria;
 
 @Service
 public class BoardServiceImpl implements BoardService{
@@ -42,6 +43,18 @@ public class BoardServiceImpl implements BoardService{
 	public int remove(Integer bNo) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.delete(bNo);
+	}
+
+	@Override
+	public List<BoardVO> listCriteria(Criteria cri) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.listCriteria(cri);
+	}
+
+	@Override
+	public int countArticles() {
+		// TODO Auto-generated method stub
+		return dao.countArticles();
 	}
 
 }

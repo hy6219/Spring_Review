@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.zero.mvc.domain.model.BoardVO;
+import com.zero.mvc.domain.model.Criteria;
+import com.zero.mvc.domain.model.PageMaker;
 import com.zero.mvc.service.BoardService;
 
 @Controller
@@ -158,11 +161,34 @@ public class BoardController {
 		return "redirect:/board/listAll";
 	}
 	
+	
+	//페이징 처리
+	@RequestMapping(value="/listCri", method=RequestMethod.GET)
+	public String listPage(@ModelAttribute("cri") Criteria cri,Model model) throws Exception {
+		logger.info("cri: "+cri.toString());
+		
+		
+		PageMaker pageMaker=new PageMaker();
+		pageMaker.setCri(cri);
+		//전체 게시물 수
+		int totalCount=service.countArticles();
+		
+		pageMaker.setTotalCount(totalCount);
+		
+		List<BoardVO> list=service.listCriteria(cri);
+		model.addAttribute("list",list);
+		model.addAttribute("pageMaker",pageMaker);
+		
+		return "/board/listPage";
+	}
+	
 	//예외처리
 	//exceptionHandler,ResponseStatus
-	@ExceptionHandler(Exception.class)
-	@ResponseStatus(value=HttpStatus.NOT_FOUND,reason="404")
-	public void handleException(Exception e) {
-		logger.info("error:{}",e.getMessage());
-	}
-}
+//	@ExceptionHandler(Exception.class)
+//	@ResponseStatus(value=HttpStatus.NOT_FOUND,reason="404")
+//	public void handleException(Exception e) {
+//		logger.info("error:{}",e.getMessage());
+//	}
+//	
+
+}	

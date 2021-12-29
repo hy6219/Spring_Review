@@ -37,4 +37,31 @@
   		DELETE FROM TBL_BOARD
   		WHERE BNO=#{bno}
   	</delete>
+  	<!-- 페이징 : 10개씩 잘라오기-->
+  	<select id="listPage" resultType="boardDto">
+  		<![CDATA[
+  			SELECT BNO,TITLE,CONTENT,WRITER,REGDATE,VIEWCNT
+  			FROM TBL_BOARD
+  			WHERE BNO>0
+  			ORDER BY BNO DESC, REGDATE DESC
+  			LIMIT #{idx},10
+  		]]>
+  	</select>
+  	
+  	<!-- 유동적으로 x개씩 잘라올수 있도록 하기 -->
+  	<select id="listCriteria" resultType="boardDto">
+  		<![CDATA[
+  			SELECT BNO,TITLE,CONTENT,WRITER,REGDATE,VIEWCNT
+  			FROM TBL_BOARD
+  			WHERE BNO>0
+  			ORDER BY BNO DESC, REGDATE DESC
+  			LIMIT #{pageStart},#{pageNum}
+  		]]>
+  	</select>
+  	  	
+  	 <!-- 전체 게시물 수 세기 -->
+  	 <select id="countArticles" resultType="int">
+  	  SELECT COUNT(BNO)
+  	  FROM TBL_BOARD
+  	 </select>	
   </mapper>

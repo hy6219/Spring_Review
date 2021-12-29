@@ -3,6 +3,7 @@ package com.zero.mvc.domain.dao;
 import java.util.List;
 
 import com.zero.mvc.domain.model.BoardVO;
+import com.zero.mvc.domain.model.Criteria;
 
 public interface BoardDao {
 	
@@ -13,4 +14,7 @@ public interface BoardDao {
 	public List<BoardVO> selectAll() throws Exception;
 	public int update(BoardVO board) throws Exception;
 	public int delete(Integer bNo) throws Exception;
+	public List<BoardVO> listPage(int page) throws Exception;
+	public List<BoardVO> listCriteria(Criteria cri) throws Exception;
+	public int countArticles();
 }
