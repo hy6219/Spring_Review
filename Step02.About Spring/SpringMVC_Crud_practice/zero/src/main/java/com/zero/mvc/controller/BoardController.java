@@ -6,15 +6,12 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.zero.mvc.domain.model.BoardVO;
@@ -95,6 +92,27 @@ public class BoardController {
 			model.addAttribute("article",target);
 			
 			return "/board/read";
+		}
+		
+		//페이징처리 이후  정보 유지하기
+		@RequestMapping(value="/readPage",method=RequestMethod.GET)
+		public String read(@RequestParam("bno") int bno,
+						  @ModelAttribute("cri") Criteria cri,
+						  Model model) {
+			
+			BoardVO target=new BoardVO();
+			
+			try {
+				target=service.read(bno);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			//존재하는 경우
+			model.addAttribute("article",target);
+			
+			return "/board/readPage";
 		}
 		
 		//게시글 삭제
