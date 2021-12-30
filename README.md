@@ -23,3 +23,5 @@
 ## 04. 페이징 처리
 
 - [스프링 페이징 기본](https://github.com/hy6219/Spring_Review/blob/main/Step02.About%20Spring/SpringMVC/Pagination/%ED%8E%98%EC%9D%B4%EC%A7%95%EC%B2%98%EB%A6%AC_Basic.md)
+
+- [스프링 페이징 개선 방법](https://github.com/hy6219/Spring_Review/blob/main/Step02.About%20Spring/SpringMVC/Pagination/%ED%8E%98%EC%9D%B4%EC%A7%95%20%EC%B2%98%EB%A6%AC%20%EA%B0%9C%EC%84%A0.md)
