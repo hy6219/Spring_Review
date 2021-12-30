@@ -143,8 +143,7 @@ public class BoardController {
 		@RequestMapping(value="/removePage",method=RequestMethod.POST)
 		public String remove(@RequestParam("bno") int bno,
 				Criteria cri,
-				RedirectAttributes rttr,
-				HttpServletRequest req) {
+				RedirectAttributes rttr) {
 			
 			int removeRes=0;
 			
@@ -186,6 +185,55 @@ public class BoardController {
 			model.addAttribute("article",target);
 			
 			return "/board/modify";
+		}
+		
+		//수정할 내용 원본 보여주기 with paging information
+		@RequestMapping(value="/modifyPage",method=RequestMethod.GET)
+		public String modifyOriginal(@RequestParam("bno") int bno,
+				@ModelAttribute("cri") Criteria cri,
+				Model model) {
+			BoardVO target=new BoardVO();
+			
+			try {
+				target=service.read(bno);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			logger.info("수정할 내용 원본:{}",target);
+			
+			model.addAttribute("article",target);
+			
+			return "/board/modifyPage";
+		}
+		
+		//글수정 with paging information
+		@RequestMapping(value="/modifyPage",method=RequestMethod.POST)
+		public String modifyOriginal(BoardVO board,
+				Criteria cri,
+				RedirectAttributes rttr) {
+
+			int modRes=0;
+			
+			try {
+				modRes=service.modify(board);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			logger.info("수정할 내용: {}",board);
+			
+			rttr.addFlashAttribute("page", cri.getPage());
+			rttr.addFlashAttribute("pageNum", cri.getPageNum());
+			if(modRes>0) {
+				//수정 성공
+				rttr.addFlashAttribute("msg", "success");
+			}else {
+				//수정 실패
+				rttr.addFlashAttribute("msg", "failed");
+			}
+			
+			return "redirect:/board/listCri";
 		}
 	
 	//글 수정

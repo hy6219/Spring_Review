@@ -30,6 +30,14 @@
 			jobForm.submit();
 			
 		});
+		
+		var result='${msg}';
+		
+		if(result=="success"){
+			alert(`처리가 완료되었습니다.`);
+		}else if(result=="failed"){
+			alert(`게시글 조회/등록 과정에 문제가 발생했습니다`);
+		}
 	});
 </script>
 <body>

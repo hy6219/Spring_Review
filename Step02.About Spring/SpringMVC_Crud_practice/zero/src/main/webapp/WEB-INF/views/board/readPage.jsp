@@ -16,7 +16,7 @@
 		console.log("form요소: ",formObj);
 		
 		$(".btn-warning").on("click",function(){
-			formObj.attr("action",`<%=request.getContextPath()%>/board/modify`);
+			formObj.attr("action",`<%=request.getContextPath()%>/board/modifyPage`);
 			formObj.attr("method","get");
 			formObj.submit();
 		});
