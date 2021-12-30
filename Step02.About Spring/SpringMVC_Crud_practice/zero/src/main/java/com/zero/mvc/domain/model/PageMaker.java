@@ -1,5 +1,9 @@
 package com.zero.mvc.domain.model;
 
+import java.net.URI;
+
+import org.springframework.web.util.UriComponentsBuilder;
+
 public class PageMaker {
 	private Criteria cri;
 	private int totalCount;
@@ -124,5 +128,16 @@ public class PageMaker {
 				+ endPage + ", prev=" + prev + ", next=" + next + ", displayPageNum=" + displayPageNum + "]";
 	}
 	
+	
+	//URI 생성
+	public String makeQuery(int page) {
+		URI uri=UriComponentsBuilder.newInstance()
+				.queryParam("page",page)
+				.queryParam("pageNum", cri.getPageNum())
+				.build()
+				.toUri();
+		
+		return uri.toString();
+	}
 	
 }

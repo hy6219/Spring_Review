@@ -52,18 +52,18 @@
 		<ul class="pagination">
 			<c:if test="${pageMaker.prev }">
 			<!-- 이전페이지 -->
-				<li><a href="listCri?page=${pageMaker.startPage-1}">이전</a></li>
+				<li><a href="listCri${pageMaker.makeQuery(pageMaker.startPage-1)}">이전</a></li>
 			</c:if>
 			<!-- 페이지 번호들 -->
 			<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage }" var="idx">
 			<!-- 버튼 활성 -->
 				<li <c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-					<a href="listCri?page=${idx}">${idx }</a>
+					<a href="listCri${pageMaker.makeQuery(idx)}">${idx }</a>
 				</li>
 			</c:forEach>
 			<c:if test="${pageMaker.next }">
 			<!-- 이후페이지 -->
-				<li><a href="listCri?page=${pageMaker.endPage+1}">이후</a></li>
+				<li><a href="listCri${pageMaker.makeQuery(pageMaker.endPage+1)}">이후</a></li>
 			</c:if>
 		</ul>
 	</div>
