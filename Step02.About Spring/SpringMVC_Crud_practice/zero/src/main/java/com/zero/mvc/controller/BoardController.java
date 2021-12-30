@@ -3,6 +3,8 @@ package com.zero.mvc.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -136,6 +138,38 @@ public class BoardController {
 			
 			return "redirect: /board/listAll";
 		}
+		
+		//게시글 삭제 (페이징 정보 유지)
+		@RequestMapping(value="/removePage",method=RequestMethod.POST)
+		public String remove(@RequestParam("bno") int bno,
+				Criteria cri,
+				RedirectAttributes rttr,
+				HttpServletRequest req) {
+			
+			int removeRes=0;
+			
+			try {
+				removeRes=service.remove(bno);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			rttr.addFlashAttribute("page", cri.getPage());
+			rttr.addFlashAttribute("pageNum", cri.getPageNum());
+			
+			if(removeRes>0) {
+				//삭제 성공
+				rttr.addFlashAttribute("msg", "success");
+			}else {
+				//삭제 실패
+				rttr.addFlashAttribute("msg", "failed");
+			}
+			
+			logger.info("게시물 삭제 cri:{}",cri);
+			
+			return "redirect:/board/listCri";
+		}
+		
 		//수정할 내용 원본 보여주기
 		@RequestMapping(value="/modify",method=RequestMethod.GET)
 		public String modifyOriginal(@RequestParam("bno") int bno,Model model) {

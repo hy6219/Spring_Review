@@ -22,7 +22,8 @@
 		});
 		
 		$(".btn-danger").on("click",function(){
-			formObj.attr("action",`<%=request.getContextPath()%>/board/remove`);
+			formObj.attr("method","post");
+			formObj.attr("action",`<%=request.getContextPath()%>/board/removePage`);
 			formObj.submit();
 		});
 		
