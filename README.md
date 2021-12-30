@@ -25,3 +25,5 @@
 - [스프링 페이징 기본](https://github.com/hy6219/Spring_Review/blob/main/Step02.About%20Spring/SpringMVC/Pagination/%ED%8E%98%EC%9D%B4%EC%A7%95%EC%B2%98%EB%A6%AC_Basic.md)
 
 - [스프링 페이징 개선 방법](https://github.com/hy6219/Spring_Review/blob/main/Step02.About%20Spring/SpringMVC/Pagination/%ED%8E%98%EC%9D%B4%EC%A7%95%20%EC%B2%98%EB%A6%AC%20%EA%B0%9C%EC%84%A0.md)
+
+- [페이징처리 이후 정보 유지하기](https://github.com/hy6219/Spring_Review/blob/main/Step02.About%20Spring/SpringMVC/Pagination/%ED%8E%98%EC%9D%B4%EC%A7%95%EC%B2%98%EB%A6%AC%20%EC%9D%B4%ED%9B%84%20%EC%A0%95%EB%B3%B4%20%EC%9C%A0%EC%A7%80%ED%95%98%EA%B8%B0%20with%20%EB%AA%A9%EB%A1%9D%EC%9C%BC%EB%A1%9C%20%EB%8F%8C%EC%95%84%EA%B0%80%EA%B8%B0%2C%20update%2C%20delete.md)
