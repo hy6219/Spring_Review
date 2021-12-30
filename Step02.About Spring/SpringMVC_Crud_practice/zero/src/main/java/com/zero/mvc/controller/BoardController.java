@@ -179,7 +179,8 @@ public class BoardController {
 		model.addAttribute("list",list);
 		model.addAttribute("pageMaker",pageMaker);
 		
-		return "/board/listPage";
+		//return "/board/listPage";
+		return "/board/listCri";
 	}
 	
 	//예외처리
