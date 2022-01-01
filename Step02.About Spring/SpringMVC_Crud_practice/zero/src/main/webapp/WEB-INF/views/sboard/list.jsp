@@ -64,7 +64,7 @@
 						<tr>
 							<fmt:parseDate value="${item.regDate}" pattern="yyyy-MM-dd'T'HH:mm:ss" var="parsedDateTime" type="both"/>
 							<td>${item.bno }</td>
-							<td><a href="<%=request.getContextPath()%>/sboard/read?bno=${item.bno}" title="${item.bno} 게시글 보기" target="_blank">${item.title }</a></td>
+							<td><a href="<%=request.getContextPath()%>/sboard/read${pageMaker.makeQuery(pageMaker.cri.page)}&bno=${item.bno}" title="${item.bno} 게시글 보기" target="_blank">${item.title }</a></td>
 							<td>${item.writer }</td>
 							<td><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss aa" value="${parsedDateTime }"/></td>
 							<td>${item.viewCnt}</td>
