@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.zero.mvc.domain.model.BoardVO;
 import com.zero.mvc.domain.model.Criteria;
+import com.zero.mvc.domain.model.SearchCriteria;
 
 public interface BoardDao {
 	
@@ -17,4 +18,6 @@ public interface BoardDao {
 	public List<BoardVO> listPage(int page) throws Exception;
 	public List<BoardVO> listCriteria(Criteria cri) throws Exception;
 	public int countArticles();
+	public List<BoardVO> listSearch(SearchCriteria cri) throws Exception;
+	public int listSearchCount(SearchCriteria cri) throws Exception;
 }

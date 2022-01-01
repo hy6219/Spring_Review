@@ -64,4 +64,81 @@
   	  SELECT COUNT(BNO)
   	  FROM TBL_BOARD
   	 </select>	
+  	 
+<!--   	 <select id="listSearch" resultType="boardDto">
+  	 	<![CDATA[
+  	 		SELECT *
+  	 		FROM TBL_BOARD
+  	 		WHERE BNO>0
+  	 	]]>
+  	 	
+  	 	<if test="searchType !=null">
+  	 		<if test="searchType=='t'.toString()">
+  	 			AND TITLE LIKE CONCAT('%',#{keyword},'%')
+  	 		</if>
+  	 		<if test="searchType=='c'.toString()">
+  	 			AND CONTENT LIKE CONCAT('%',#{keyword},'%')
+  	 		</if>
+  	 		<if test="searchType=='w'.toString()">
+  	 			AND WRITER LIKE CONCAT('%',#{keyword},'%')
+  	 		</if>
+  	 		<if test="searchType=='tc'.toString()">
+  	 			AND (TITLE LIKE CONCAT('%',#{keyword},'%') OR CONTENT LIKE CONCAT('%',#{keyword},'%'))
+  	 		</if>
+  	 		<if test="searchType=='cw'.toString()">
+  	 			AND (CONTENT LIKE CONCAT('%',#{keyword},'%') OR WRITER LIKE CONCAT('%',#{keyword},'%'))
+  	 		</if>
+  	 		<if test="searchType=='tcw'.toString()">
+  	 			AND (TITLE LIKE CONCAT('%',#{keyword},'%') OR CONTENT LIKE CONCAT('%',#{keyword},'%') OR WRITER LIKE CONCAT('%',#{keyword},'%'))
+  	 		</if>
+  	 	</if>
+  	 	<![CDATA[
+  	 		ORDER BY BNO DESC
+  	 		LIMIT #{pageStart},#{pageNum}
+  	 	]]>
+  	 </select> -->
+  	 
+  	 <sql id="search">
+  		 <if test="searchType !=null">
+  	 		<if test="searchType=='t'.toString()">
+  	 			AND TITLE LIKE CONCAT('%',#{keyword},'%')
+  	 		</if>
+  	 		<if test="searchType=='c'.toString()">
+  	 			AND CONTENT LIKE CONCAT('%',#{keyword},'%')
+  	 		</if>
+  	 		<if test="searchType=='w'.toString()">
+  	 			AND WRITER LIKE CONCAT('%',#{keyword},'%')
+  	 		</if>
+  	 		<if test="searchType=='tc'.toString()">
+  	 			AND (TITLE LIKE CONCAT('%',#{keyword},'%') OR CONTENT LIKE CONCAT('%',#{keyword},'%'))
+  	 		</if>
+  	 		<if test="searchType=='cw'.toString()">
+  	 			AND (CONTENT LIKE CONCAT('%',#{keyword},'%') OR WRITER LIKE CONCAT('%',#{keyword},'%'))
+  	 		</if>
+  	 		<if test="searchType=='tcw'.toString()">
+  	 			AND (TITLE LIKE CONCAT('%',#{keyword},'%') OR CONTENT LIKE CONCAT('%',#{keyword},'%') OR WRITER LIKE CONCAT('%',#{keyword},'%'))
+  	 		</if>
+  	 	</if>
+  	 </sql>
+  	 <select id="listSearch" resultType="boardDto">
+  	 	<![CDATA[
+  	 		SELECT *
+  	 		FROM TBL_BOARD
+  	 		WHERE BNO>0
+  	 	]]>
+  	 	<include refid="search"></include>
+  	 	<![CDATA[
+  	 		ORDER BY BNO DESC
+  	 		LIMIT #{pageStart},#{pageNum}
+  	 	]]>
+  	 </select>
+  	 
+  	 <select id="listSearchCount" resultType="int">
+  		<![CDATA[
+  			 SELECT COUNT(BNO)
+  	 		FROM TBL_BOARD
+  	 		WHERE BNO>0
+  		]]>
+  		<include refid="search"></include>
+  	 </select>
   </mapper>

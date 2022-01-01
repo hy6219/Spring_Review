@@ -134,6 +134,8 @@ public class PageMaker {
 		URI uri=UriComponentsBuilder.newInstance()
 				.queryParam("page",page)
 				.queryParam("pageNum", cri.getPageNum())
+				.queryParam("searchType",((SearchCriteria)cri).getSearchType())
+				.queryParam("keyword",((SearchCriteria)cri).getKeyword())
 				.build()
 				.toUri();
 		
