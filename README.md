@@ -29,3 +29,5 @@
 - [페이징처리 이후 정보 유지하기](https://github.com/hy6219/Spring_Review/blob/main/Step02.About%20Spring/SpringMVC/Pagination/%ED%8E%98%EC%9D%B4%EC%A7%95%EC%B2%98%EB%A6%AC%20%EC%9D%B4%ED%9B%84%20%EC%A0%95%EB%B3%B4%20%EC%9C%A0%EC%A7%80%ED%95%98%EA%B8%B0%20with%20%EB%AA%A9%EB%A1%9D%EC%9C%BC%EB%A1%9C%20%EB%8F%8C%EC%95%84%EA%B0%80%EA%B8%B0%2C%20update%2C%20delete.md)
 
 - [검색처리가 적용된 페이징 처리와 동적SQL](https://github.com/hy6219/Spring_Review/blob/main/Step02.About%20Spring/SpringMVC/Pagination/%ED%8E%98%EC%9D%B4%EC%A7%95-%EA%B2%80%EC%83%89%EC%B2%98%EB%A6%AC%EC%99%80%20%EB%8F%99%EC%A0%81SQL.md)
+
+s- [페이징-검색조건에 따른 조회,수정,삭제, 등록 처리](https://github.com/hy6219/Spring_Review/blob/main/Step02.About%20Spring/SpringMVC/Pagination/%ED%8E%98%EC%9D%B4%EC%A7%95-%EA%B2%80%EC%83%89%EC%A1%B0%EA%B1%B4%EC%97%90%20%EB%94%B0%EB%A5%B8%20%EC%A1%B0%ED%9A%8C%2C%EC%88%98%EC%A0%95%2C%EC%82%AD%EC%A0%9C%2C%20%EB%93%B1%EB%A1%9D%20%EC%B2%98%EB%A6%AC.md)
