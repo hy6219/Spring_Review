@@ -30,4 +30,4 @@
 
 - [검색처리가 적용된 페이징 처리와 동적SQL](https://github.com/hy6219/Spring_Review/blob/main/Step02.About%20Spring/SpringMVC/Pagination/%ED%8E%98%EC%9D%B4%EC%A7%95-%EA%B2%80%EC%83%89%EC%B2%98%EB%A6%AC%EC%99%80%20%EB%8F%99%EC%A0%81SQL.md)
 
-s- [페이징-검색조건에 따른 조회,수정,삭제, 등록 처리](https://github.com/hy6219/Spring_Review/blob/main/Step02.About%20Spring/SpringMVC/Pagination/%ED%8E%98%EC%9D%B4%EC%A7%95-%EA%B2%80%EC%83%89%EC%A1%B0%EA%B1%B4%EC%97%90%20%EB%94%B0%EB%A5%B8%20%EC%A1%B0%ED%9A%8C%2C%EC%88%98%EC%A0%95%2C%EC%82%AD%EC%A0%9C%2C%20%EB%93%B1%EB%A1%9D%20%EC%B2%98%EB%A6%AC.md)
+- [페이징-검색조건에 따른 조회,수정,삭제, 등록 처리](https://github.com/hy6219/Spring_Review/blob/main/Step02.About%20Spring/SpringMVC/Pagination/%ED%8E%98%EC%9D%B4%EC%A7%95-%EA%B2%80%EC%83%89%EC%A1%B0%EA%B1%B4%EC%97%90%20%EB%94%B0%EB%A5%B8%20%EC%A1%B0%ED%9A%8C%2C%EC%88%98%EC%A0%95%2C%EC%82%AD%EC%A0%9C%2C%20%EB%93%B1%EB%A1%9D%20%EC%B2%98%EB%A6%AC.md)
